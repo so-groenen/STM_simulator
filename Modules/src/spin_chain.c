@@ -1,4 +1,4 @@
-#include "spin_chain.h"
+#include "Modules/spin_chain.h"
 
 
 static bool periodic_boundary = false;

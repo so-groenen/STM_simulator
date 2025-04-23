@@ -1,4 +1,4 @@
-#include "game_module.h"
+#include "Modules/game_modules.h"
 
 float inter_atomic; 
 void set_inter_atomic(float x)

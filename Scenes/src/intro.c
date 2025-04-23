@@ -27,10 +27,17 @@ Scene_t intro_scene =
 
 static void intro_init()
 {
+    puts("GAME LOG: INTRO: init.");
     greeting = text_create("PRESS [SPACE] TO CONTINUE", 40, WHITE);
     text_set_x_centered(&greeting, GetScreenWidth()/2);
     text_set_y         (&greeting, GetScreenHeight()/2);
-    printf("GAME LOG: intro init\n");
+}
+static void intro_update(void)
+{
+    if (IsKeyPressed(KEY_SPACE))
+    {
+        intro_scene.state = LEAVING;
+    }    
 }
 static void intro_draw(void)
 {
@@ -39,23 +46,12 @@ static void intro_draw(void)
         text_draw(&greeting);
     EndDrawing();       
 }
-static void intro_update(void)
-{
-    if (IsKeyPressed(KEY_SPACE))
-    {
-        // state = LEAVING;
-        intro_scene.state = LEAVING;
-    }    
-}
+
 static void intro_clean()
 {
-    printf("GAME LOG: intro clean up\n");
+    puts("GAME LOG: INTRO: clean-up.");
     screen_level_reset(&intro_scene);
     intro_scene.next_screen = GAME;
-
-    // my_screen = GAME;
-    // state     = ENTERING;
-
 }
 static void intro_run()
 {

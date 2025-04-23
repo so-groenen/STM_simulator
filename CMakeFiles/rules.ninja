@@ -42,7 +42,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = "C:\Program Files\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\solof\Desktop\programming\C_programming\git__STM\STM_simulator -BC:\Users\solof\Desktop\programming\C_programming\git__STM\STM_simulator
+  command = "C:\Program Files\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\solof\Desktop\programming\C_programming\github_projects\STM_simulator -BC:\Users\solof\Desktop\programming\C_programming\github_projects\STM_simulator
   description = Re-running CMake...
   generator = 1
 

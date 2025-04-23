@@ -1,21 +1,21 @@
-#ifndef GAME_STATES_H
-#define GAME_STATES_H
+#ifndef SCENE_STATES_H
+#define SCENE_STATES_H
 
-typedef enum Scene_name // 
+typedef enum 
 {
     INTRO,
     GAME,
     OUTRO,
 } Scene_name;
 
-typedef enum Game_state
+typedef enum
 {
     ENTERING,
     RUNNING,
     LEAVING,
 } Game_state;
 
-typedef struct Scene
+typedef struct
 {
     Scene_name next_screen;
     Game_state state;
@@ -23,6 +23,8 @@ typedef struct Scene
     void (*run)(void);
     void (*clean)(void);
 } Scene_t;
+
+
 
 void screen_level_reset(Scene_t* level);
 

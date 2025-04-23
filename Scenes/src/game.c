@@ -1,16 +1,15 @@
 #include "Scenes/game.h"
 
+// #define DEBUG 
 
-
-//         Static functions
+//        Static functions
 // ================================
 static void game_init(void);
 static void game_run(void);
 static void game_clean(void);
-static void game_update(void);
-static void game_draw(void);
+static void _game_update(void);
+static void _game_draw(void);
 // ================================
-
 
 // ====== global variable ======
 Scene_t game_scene =
@@ -48,11 +47,13 @@ static void game_init()
 {
     size_t N_mag_domains  = N_atoms/(2*STM_atom_width);
     set_inter_atomic(100.0f);
+    puts("GAME LOG: GAME: init");
 
+#ifdef DEBUG
     printf("GAME_LOG: N atoms: %zu\n", N_atoms);
     printf("GAME_LOG: N atoms for STM: %zu\n", STM_atom_width);
     printf("GAME_LOG: Number of writable magnetic domains: %zu\n", N_mag_domains);
-
+#endif
     // ------ Spin chain ------
     spin_chain_set_periodic_boundary(false);
     spin_chain_set_interaction(1.0f);
@@ -102,8 +103,9 @@ static void game_init()
             .y      = -nano_world_size.y / (2 * 3.0f) 
         }
     };
+#ifdef DEBUG
     printf("GAME_LOG: domain_wall: N_walls %zu\n", domain_wall.N_walls);
-
+#endif 
     // ------ Text ------
     title_setup = text_create("SETUP: Write 42 using the STM tip.", 40, GREEN);
     text_set_x_centered(&title_setup, GetScreenWidth()/2);
@@ -133,7 +135,7 @@ static void game_init()
 }
  
 
-static void game_update(void)
+static void _game_update(void)
 {
     if (mode == SETUP && magnetic_data_is_target(&my_data))
     {
@@ -176,7 +178,7 @@ static void game_update(void)
 }
 
 
-static void game_draw(void)
+static void _game_draw(void)
 {
     BeginDrawing();
         ClearBackground(WHITE);
@@ -253,13 +255,13 @@ static void game_draw(void)
 
 static void game_run()
 {
-    game_update();
-    game_draw();
+    _game_update();
+    _game_draw();
 }
 
 static void game_clean()
 {
-    printf("GAME_LOG: game clean up\n");
+    puts("GAME LOG: GAME: clean-up.");
     spin_chain_release(&my_chain);
     screen_level_reset(&game_scene);
     game_scene.next_screen = OUTRO;

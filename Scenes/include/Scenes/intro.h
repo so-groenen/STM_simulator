@@ -6,8 +6,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "assert.h"
-#include "game_states.h"
-#include "text_module.h"
+#include "Scenes/scene_states.h"
+#include "Modules/text_module.h"
 
 
 // void intro_init();

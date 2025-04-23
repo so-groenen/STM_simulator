@@ -1,4 +1,4 @@
-#include "stm.h"
+#include "Modules/stm.h"
 
 stm_t stm_create(size_t N_atom_width, float heigth, float tip_height, Color color)
 {

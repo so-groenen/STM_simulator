@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator"
+			"value" : "c:/Users/solof/Desktop/programming/C_programming/github_projects/STM_simulator"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -139,10 +139,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "C compiler"
 				}
 			],
-			"type" : "UNINITIALIZED",
+			"type" : "STRING",
 			"value" : "C:/msys64/mingw64/bin/gcc.exe"
 		},
 		{
@@ -447,7 +447,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/solof/Desktop/programming/C_programming/github_projects/STM_simulator/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -519,7 +519,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator"
+			"value" : "C:/Users/solof/Desktop/programming/C_programming/github_projects/STM_simulator"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -531,7 +531,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator"
+			"value" : "C:/Users/solof/Desktop/programming/C_programming/github_projects/STM_simulator"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -1251,7 +1251,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator"
+			"value" : "C:/Users/solof/Desktop/programming/C_programming/github_projects/STM_simulator"
 		},
 		{
 			"name" : "stm_simulator_IS_TOP_LEVEL",
@@ -1275,7 +1275,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator"
+			"value" : "C:/Users/solof/Desktop/programming/C_programming/github_projects/STM_simulator"
 		}
 	],
 	"kind" : "cache",

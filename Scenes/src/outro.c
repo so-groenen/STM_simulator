@@ -28,10 +28,10 @@ Scene_t outro_scene =
 
 void outro_init()
 {
+    puts("GAME LOG: OUTRO: init.");
     goodbye = text_create("PRESS [ESC] TO CONTINUE", 40, WHITE);
     text_set_x_centered(&goodbye, GetScreenWidth()/2);
     text_set_y         (&goodbye, GetScreenHeight()/2);
-    printf("GAME LOG: outro init\n");
 }
 
 static void outro_draw(void)
@@ -58,6 +58,6 @@ void outro_run()
 
 void outro_clean()
 {
-    printf("GAME LOG: outro clean up\n");
+    puts("GAME LOG: OUTRO: clean-up.");
     screen_level_reset(&outro_scene);
 }

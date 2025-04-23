@@ -86,15 +86,15 @@
 			[
 				{
 					"backtrace" : 4,
-					"path" : "C:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator"
+					"path" : "C:/Users/solof/Desktop/programming/C_programming/github_projects/STM_simulator"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "C:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include"
+					"path" : "C:/Users/solof/Desktop/programming/C_programming/github_projects/STM_simulator/Scenes/include"
 				},
 				{
 					"backtrace" : 6,
-					"path" : "C:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Modules/include"
+					"path" : "C:/Users/solof/Desktop/programming/C_programming/github_projects/STM_simulator/Modules/include"
 				}
 			],
 			"language" : "C",
@@ -171,7 +171,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "game_states.c",
+			"path" : "Scenes/src/scene_states.c",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -195,7 +195,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Modules/src/game_module.c",
+			"path" : "Modules/src/game_modules.c",
 			"sourceGroupIndex" : 0
 		},
 		{

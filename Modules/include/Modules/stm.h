@@ -6,7 +6,7 @@
 #include <math.h>
 #include "raylib.h"
 #include <stdint.h>
-#include "spin_chain.h"
+#include "Modules/spin_chain.h"
 
 typedef bool polarization;
 #define STM_UP true

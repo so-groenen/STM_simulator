@@ -5,12 +5,12 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <time.h>
-#include "spin_chain.h"
-#include "stm.h"
-#include "text_module.h"
-#include "magnetic_data.h"
-#include "game_module.h"
-#include "game_states.h"
+#include "..\..\spin_chain.h"
+#include "..\..\stm.h"
+#include "..\..\text_module.h"
+#include "..\..\magnetic_data.h"
+#include "..\..\game_module.h"
+#include "..\..\game_states.h"
 
 #define LIGHTRED (Color){255, 100, 177, 200}        
 extern size_t N_atoms;

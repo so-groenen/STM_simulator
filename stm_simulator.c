@@ -1,7 +1,7 @@
-#include "game.h"
+#include "Scenes/game.h"
+#include "Scenes/outro.h"
+#include "Scenes/intro.h"
 #include "game_states.h"
-#include "outro.h"
-#include "intro.h"
 
  
 size_t N_atoms;

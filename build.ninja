@@ -53,7 +53,15 @@ build CMakeFiles/stm_simulator.dir/stm_simulator.c.obj: C_COMPILER__stm_simulato
   CONFIG = Debug
   DEP_FILE = CMakeFiles\stm_simulator.dir\stm_simulator.c.obj.d
   FLAGS = -g -march=native -fdiagnostics-color
-  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include
+  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Modules/include
+  OBJECT_DIR = CMakeFiles\stm_simulator.dir
+  OBJECT_FILE_DIR = CMakeFiles\stm_simulator.dir
+
+build CMakeFiles/stm_simulator.dir/game_states.c.obj: C_COMPILER__stm_simulator_unscanned_Debug C$:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/game_states.c || cmake_object_order_depends_target_stm_simulator
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\stm_simulator.dir\game_states.c.obj.d
+  FLAGS = -g -march=native -fdiagnostics-color
+  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Modules/include
   OBJECT_DIR = CMakeFiles\stm_simulator.dir
   OBJECT_FILE_DIR = CMakeFiles\stm_simulator.dir
 
@@ -61,7 +69,7 @@ build CMakeFiles/stm_simulator.dir/Scenes/src/game.c.obj: C_COMPILER__stm_simula
   CONFIG = Debug
   DEP_FILE = CMakeFiles\stm_simulator.dir\Scenes\src\game.c.obj.d
   FLAGS = -g -march=native -fdiagnostics-color
-  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include
+  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Modules/include
   OBJECT_DIR = CMakeFiles\stm_simulator.dir
   OBJECT_FILE_DIR = CMakeFiles\stm_simulator.dir\Scenes\src
 
@@ -69,7 +77,7 @@ build CMakeFiles/stm_simulator.dir/Scenes/src/intro.c.obj: C_COMPILER__stm_simul
   CONFIG = Debug
   DEP_FILE = CMakeFiles\stm_simulator.dir\Scenes\src\intro.c.obj.d
   FLAGS = -g -march=native -fdiagnostics-color
-  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include
+  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Modules/include
   OBJECT_DIR = CMakeFiles\stm_simulator.dir
   OBJECT_FILE_DIR = CMakeFiles\stm_simulator.dir\Scenes\src
 
@@ -77,57 +85,49 @@ build CMakeFiles/stm_simulator.dir/Scenes/src/outro.c.obj: C_COMPILER__stm_simul
   CONFIG = Debug
   DEP_FILE = CMakeFiles\stm_simulator.dir\Scenes\src\outro.c.obj.d
   FLAGS = -g -march=native -fdiagnostics-color
-  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include
+  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Modules/include
   OBJECT_DIR = CMakeFiles\stm_simulator.dir
   OBJECT_FILE_DIR = CMakeFiles\stm_simulator.dir\Scenes\src
 
-build CMakeFiles/stm_simulator.dir/game_states.c.obj: C_COMPILER__stm_simulator_unscanned_Debug C$:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/game_states.c || cmake_object_order_depends_target_stm_simulator
+build CMakeFiles/stm_simulator.dir/Modules/src/game_module.c.obj: C_COMPILER__stm_simulator_unscanned_Debug C$:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Modules/src/game_module.c || cmake_object_order_depends_target_stm_simulator
   CONFIG = Debug
-  DEP_FILE = CMakeFiles\stm_simulator.dir\game_states.c.obj.d
+  DEP_FILE = CMakeFiles\stm_simulator.dir\Modules\src\game_module.c.obj.d
   FLAGS = -g -march=native -fdiagnostics-color
-  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include
+  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Modules/include
   OBJECT_DIR = CMakeFiles\stm_simulator.dir
-  OBJECT_FILE_DIR = CMakeFiles\stm_simulator.dir
+  OBJECT_FILE_DIR = CMakeFiles\stm_simulator.dir\Modules\src
 
-build CMakeFiles/stm_simulator.dir/game_module.c.obj: C_COMPILER__stm_simulator_unscanned_Debug C$:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/game_module.c || cmake_object_order_depends_target_stm_simulator
+build CMakeFiles/stm_simulator.dir/Modules/src/spin_chain.c.obj: C_COMPILER__stm_simulator_unscanned_Debug C$:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Modules/src/spin_chain.c || cmake_object_order_depends_target_stm_simulator
   CONFIG = Debug
-  DEP_FILE = CMakeFiles\stm_simulator.dir\game_module.c.obj.d
+  DEP_FILE = CMakeFiles\stm_simulator.dir\Modules\src\spin_chain.c.obj.d
   FLAGS = -g -march=native -fdiagnostics-color
-  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include
+  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Modules/include
   OBJECT_DIR = CMakeFiles\stm_simulator.dir
-  OBJECT_FILE_DIR = CMakeFiles\stm_simulator.dir
+  OBJECT_FILE_DIR = CMakeFiles\stm_simulator.dir\Modules\src
 
-build CMakeFiles/stm_simulator.dir/spin_chain.c.obj: C_COMPILER__stm_simulator_unscanned_Debug C$:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/spin_chain.c || cmake_object_order_depends_target_stm_simulator
+build CMakeFiles/stm_simulator.dir/Modules/src/stm.c.obj: C_COMPILER__stm_simulator_unscanned_Debug C$:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Modules/src/stm.c || cmake_object_order_depends_target_stm_simulator
   CONFIG = Debug
-  DEP_FILE = CMakeFiles\stm_simulator.dir\spin_chain.c.obj.d
+  DEP_FILE = CMakeFiles\stm_simulator.dir\Modules\src\stm.c.obj.d
   FLAGS = -g -march=native -fdiagnostics-color
-  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include
+  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Modules/include
   OBJECT_DIR = CMakeFiles\stm_simulator.dir
-  OBJECT_FILE_DIR = CMakeFiles\stm_simulator.dir
+  OBJECT_FILE_DIR = CMakeFiles\stm_simulator.dir\Modules\src
 
-build CMakeFiles/stm_simulator.dir/stm.c.obj: C_COMPILER__stm_simulator_unscanned_Debug C$:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/stm.c || cmake_object_order_depends_target_stm_simulator
+build CMakeFiles/stm_simulator.dir/Modules/src/text_module.c.obj: C_COMPILER__stm_simulator_unscanned_Debug C$:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Modules/src/text_module.c || cmake_object_order_depends_target_stm_simulator
   CONFIG = Debug
-  DEP_FILE = CMakeFiles\stm_simulator.dir\stm.c.obj.d
+  DEP_FILE = CMakeFiles\stm_simulator.dir\Modules\src\text_module.c.obj.d
   FLAGS = -g -march=native -fdiagnostics-color
-  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include
+  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Modules/include
   OBJECT_DIR = CMakeFiles\stm_simulator.dir
-  OBJECT_FILE_DIR = CMakeFiles\stm_simulator.dir
+  OBJECT_FILE_DIR = CMakeFiles\stm_simulator.dir\Modules\src
 
-build CMakeFiles/stm_simulator.dir/text_module.c.obj: C_COMPILER__stm_simulator_unscanned_Debug C$:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/text_module.c || cmake_object_order_depends_target_stm_simulator
+build CMakeFiles/stm_simulator.dir/Modules/src/magnetic_data.c.obj: C_COMPILER__stm_simulator_unscanned_Debug C$:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Modules/src/magnetic_data.c || cmake_object_order_depends_target_stm_simulator
   CONFIG = Debug
-  DEP_FILE = CMakeFiles\stm_simulator.dir\text_module.c.obj.d
+  DEP_FILE = CMakeFiles\stm_simulator.dir\Modules\src\magnetic_data.c.obj.d
   FLAGS = -g -march=native -fdiagnostics-color
-  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include
+  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Modules/include
   OBJECT_DIR = CMakeFiles\stm_simulator.dir
-  OBJECT_FILE_DIR = CMakeFiles\stm_simulator.dir
-
-build CMakeFiles/stm_simulator.dir/magnetic_data.c.obj: C_COMPILER__stm_simulator_unscanned_Debug C$:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/magnetic_data.c || cmake_object_order_depends_target_stm_simulator
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles\stm_simulator.dir\magnetic_data.c.obj.d
-  FLAGS = -g -march=native -fdiagnostics-color
-  INCLUDES = -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator -IC:/Users/solof/Desktop/programming/C_programming/git__STM/STM_simulator/Scenes/include
-  OBJECT_DIR = CMakeFiles\stm_simulator.dir
-  OBJECT_FILE_DIR = CMakeFiles\stm_simulator.dir
+  OBJECT_FILE_DIR = CMakeFiles\stm_simulator.dir\Modules\src
 
 
 # =============================================================================
@@ -137,7 +137,7 @@ build CMakeFiles/stm_simulator.dir/magnetic_data.c.obj: C_COMPILER__stm_simulato
 #############################################
 # Link the executable stm_simulator.exe
 
-build stm_simulator.exe: C_EXECUTABLE_LINKER__stm_simulator_Debug CMakeFiles/stm_simulator.dir/stm_simulator.c.obj CMakeFiles/stm_simulator.dir/Scenes/src/game.c.obj CMakeFiles/stm_simulator.dir/Scenes/src/intro.c.obj CMakeFiles/stm_simulator.dir/Scenes/src/outro.c.obj CMakeFiles/stm_simulator.dir/game_states.c.obj CMakeFiles/stm_simulator.dir/game_module.c.obj CMakeFiles/stm_simulator.dir/spin_chain.c.obj CMakeFiles/stm_simulator.dir/stm.c.obj CMakeFiles/stm_simulator.dir/text_module.c.obj CMakeFiles/stm_simulator.dir/magnetic_data.c.obj
+build stm_simulator.exe: C_EXECUTABLE_LINKER__stm_simulator_Debug CMakeFiles/stm_simulator.dir/stm_simulator.c.obj CMakeFiles/stm_simulator.dir/game_states.c.obj CMakeFiles/stm_simulator.dir/Scenes/src/game.c.obj CMakeFiles/stm_simulator.dir/Scenes/src/intro.c.obj CMakeFiles/stm_simulator.dir/Scenes/src/outro.c.obj CMakeFiles/stm_simulator.dir/Modules/src/game_module.c.obj CMakeFiles/stm_simulator.dir/Modules/src/spin_chain.c.obj CMakeFiles/stm_simulator.dir/Modules/src/stm.c.obj CMakeFiles/stm_simulator.dir/Modules/src/text_module.c.obj CMakeFiles/stm_simulator.dir/Modules/src/magnetic_data.c.obj
   CONFIG = Debug
   FLAGS = -g
   LINK_LIBRARIES = -lraylib  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32

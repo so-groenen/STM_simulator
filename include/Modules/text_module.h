@@ -14,6 +14,7 @@ typedef struct
 } text_t;
 
 text_t text_create(const char* title, int fontSize, Color color);
+int text_get_x_center(const text_t* text);
 void text_set_size(text_t* text);
 void text_set_x_centered(text_t* text, float x);
 void text_set_x(text_t* text, float x);

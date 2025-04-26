@@ -15,8 +15,8 @@
 #include "Scenes/scene_states.h"
 
 #define LIGHTRED (Color){255, 100, 177, 200}        
-extern size_t N_atoms;
-extern size_t STM_atom_width; 
+
 extern Scene_t game_scene;
+extern Difficulty difficulty;
 
 #endif

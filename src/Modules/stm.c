@@ -28,7 +28,7 @@ stm_t stm_create(size_t N_atom_width, float heigth, float tip_height, Color colo
 void stm_init_state(stm_t* stm)
 {
     stm->atom_current = 0;
-    stm->orientation  = STM_DOWN;
+    stm->orientation  = STM_UP;
 }
 
 void stm_set_rect(stm_t* stm)

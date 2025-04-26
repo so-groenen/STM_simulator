@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include "assert.h"
 #include "Modules/spin_chain.h"
 #include "Scenes/scene_states.h"
@@ -11,5 +12,5 @@
 
 
 extern Scene_t intro_scene;
-
+extern Difficulty difficulty;
 #endif

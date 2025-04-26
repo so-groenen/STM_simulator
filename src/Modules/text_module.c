@@ -5,7 +5,10 @@ void text_set_size(text_t* text)
 {
     text->textSize = MeasureText(text->buffer, text->fontSize);
 }
- 
+int text_get_x_center(const text_t* text)
+{
+    return text->x + 0.5f*text->textSize; 
+}
 text_t text_create(const char* title, int fontSize, Color color)
 {
     text_t text =

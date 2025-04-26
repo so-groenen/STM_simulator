@@ -10,5 +10,6 @@
 #include "Modules/text_module.h"
 
 extern Scene_t outro_scene;
+extern Difficulty difficulty;
 
 #endif

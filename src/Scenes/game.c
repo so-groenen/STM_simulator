@@ -25,7 +25,10 @@ Scene_t game_scene =
 
 
 // ==== static game global variables ====
-static float temperature = 0.0f;
+static float temperature;
+static size_t N_atoms;
+static size_t STM_atom_width; 
+
 static Camera2D camera;
 static Vector2 nano_world_size;
 static graph_t my_graph;
@@ -39,17 +42,37 @@ static text_t spin_text;
 static text_t binary_text;
 static text_t decimal_text;
 static magnetic_data_t my_data;
-static game_mode mode = SETUP;
+static game_mode mode;
 // =============================
 
 
 static void game_init()
 {
-    size_t N_mag_domains  = N_atoms/(2*STM_atom_width);
-    // set_inter_atomic(100.0f);
-    spin_chain_set_inter_atomic(100.0f);
-
     puts("GAME LOG: GAME: init");
+
+    switch (difficulty)
+    {
+    case EASY:
+        {
+            N_atoms        = 640;
+            STM_atom_width = 40;
+        }
+        break;
+    case MEDIUM:
+        {
+            N_atoms        = 320;
+            STM_atom_width = 20;
+        }
+        break;
+    case HARD:
+        {
+            N_atoms        = 160;
+            STM_atom_width = 10;
+        }
+        break;
+    }
+    size_t N_mag_domains  = N_atoms/(2*STM_atom_width);
+
 
 #ifdef DEBUG
     printf("GAME_LOG: N atoms: %zu\n", N_atoms);
@@ -58,17 +81,18 @@ static void game_init()
 #endif
 
     // ==== Spin chain ====
+    spin_chain_set_inter_atomic(100.0f);
     spin_chain_set_periodic_boundary(false);
     spin_chain_set_interaction(1.0f);
 
     spin_chain_init      (&my_chain, N_atoms);
-    spin_chain_set_all   (&my_chain, SPIN_UP);
+    spin_chain_set_all   (&my_chain, SPIN_DOWN);
     spin_chain_set_energy(&my_chain);
 
 
     // ==== graph & camera ====
-    // camera_init(&camera, &my_chain);
-    spin_chain_set_camera(&camera, &my_chain, 0.9);
+    float chain_to_screen = 0.9f;           // 1 means the full chain takes up all the screen width;
+    spin_chain_set_camera(&camera, &my_chain, chain_to_screen);
     nano_world_size = get_nano_world_size(&camera);
     my_graph = (graph_t)
     {
@@ -136,6 +160,7 @@ static void game_init()
 
     // ==== game state ====
     mode = SETUP;
+    temperature = 0.0f;
 }
  
 
@@ -148,8 +173,6 @@ static void _game_update(void)
     }
     else if (mode == START && !magnetic_data_is_target(&my_data))
     {
-        // break;
-        // state     = LEAVING;
         game_scene.state = LEAVING;
     }
     
@@ -199,7 +222,7 @@ static void _game_draw(void)
         }
         
         // temperature text:
-        text_write         (&temperatur_text, TextFormat("temperature= %.3f", temperature));
+        text_write         (&temperatur_text, TextFormat("temperature= %.2f", temperature));
         text_set_x_centered(&temperatur_text, GetScreenWidth()/2);
         text_draw          (&temperatur_text);
 
@@ -227,7 +250,7 @@ static void _game_draw(void)
         // decimal text:
         magnetic_data_set_decimal(&my_data);
 
-        text_write         (&decimal_text, TextFormat("Decimal value: %d", my_data.decimal_value));
+        text_write         (&decimal_text, TextFormat("Base 10 value: %d", my_data.decimal_value));
         text_set_x_centered(&decimal_text, GetScreenWidth()/2.0f);
         text_draw          (&decimal_text);
 

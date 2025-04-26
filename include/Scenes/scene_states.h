@@ -10,6 +10,13 @@ typedef enum
 
 typedef enum
 {
+    EASY,
+    MEDIUM,
+    HARD,
+} Difficulty;
+
+typedef enum
+{
     ENTERING,
     RUNNING,
     LEAVING,

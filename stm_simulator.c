@@ -4,12 +4,11 @@
 #include "Scenes/scene_states.h"
 
  
-size_t N_atoms;
-size_t STM_atom_width;
 
 static Scene_t* current_scene = &intro_scene;
 static void update_draw_frame();
 static void cleanup();
+Difficulty difficulty;
 
 int main(void)
 {
@@ -19,9 +18,6 @@ int main(void)
 
     puts("===============");
     puts("GAME LOG: START");
-
-    N_atoms        = 640;
-    STM_atom_width = 40;
 
     while (!WindowShouldClose())
     {

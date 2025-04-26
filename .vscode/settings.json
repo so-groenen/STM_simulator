@@ -4,6 +4,19 @@
         "intro.h": "c",
         "game_module.h": "c",
         "text_module.h": "c",
-        "magnetic_data.h": "c"
+        "magnetic_data.h": "c",
+        "random": "c",
+        "*.tcc": "c",
+        "chrono": "c",
+        "cmath": "c",
+        "format": "c",
+        "numeric": "c",
+        "ratio": "c",
+        "cinttypes": "c",
+        "cstdlib": "c",
+        "*.def": "c",
+        "*.inc": "c",
+        "compare": "c",
+        "cstdint": "c"
     }
 }

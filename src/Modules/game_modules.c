@@ -1,10 +1,10 @@
 #include "Modules/game_modules.h"
 
-float inter_atomic; 
-void set_inter_atomic(float x)
-{
-    inter_atomic = x;
-} 
+// float inter_atomic; 
+// void set_inter_atomic(float x)
+// {
+//     inter_atomic = x;
+// } 
 
 Vector2 get_nano_world_size(const Camera2D* camera)
 {

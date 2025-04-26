@@ -3,10 +3,16 @@
 
 static bool periodic_boundary = false;
 static float interaction      = 1.0f;
+float inter_atomic; 
+
 
 static float _get_deltaE(const spin_chain_t* my_chain, size_t i, float dtheta);
 static bool _accept_proposal(float dE, float temp);
 
+void spin_chain_set_inter_atomic(float x)
+{
+    inter_atomic = x;
+} 
 
 void spin_chain_set_interaction(float J)
 {
@@ -35,17 +41,18 @@ void spin_chain_init(spin_chain_t* my_chain, size_t N_atom)
     my_chain->chain_length = (N_atom-1)*inter_atomic;
 }
 
-void camera_init(Camera2D* camera, const spin_chain_t* chain)
+void spin_chain_set_camera(Camera2D* camera, const spin_chain_t* chain, float ratio)
 {
     camera->target.x   = chain->chain_length / 2.0f;
     camera->target.y = 0;
     camera->offset   = (Vector2){ (float)GetScreenWidth()/2.0f, (float)GetScreenHeight()/2.0f};
     camera->rotation = 0.0f;
-    camera->zoom     = 0.9 * (float)GetScreenWidth() / chain->chain_length;
+    camera->zoom     = ratio * (float)GetScreenWidth() / chain->chain_length;
 }
 
 void spin_chain_release(spin_chain_t* my_chain)
 {
+    puts("GAME LOG: spin chain memory release.");
     free(my_chain->spins);
 }
 

@@ -24,7 +24,7 @@ Scene_t game_scene =
 
 
 
-// ------ static game global variables ------
+// ==== static game global variables ====
 static float temperature = 0.0f;
 static Camera2D camera;
 static Vector2 nano_world_size;
@@ -46,7 +46,9 @@ static game_mode mode = SETUP;
 static void game_init()
 {
     size_t N_mag_domains  = N_atoms/(2*STM_atom_width);
-    set_inter_atomic(100.0f);
+    // set_inter_atomic(100.0f);
+    spin_chain_set_inter_atomic(100.0f);
+
     puts("GAME LOG: GAME: init");
 
 #ifdef DEBUG
@@ -54,7 +56,8 @@ static void game_init()
     printf("GAME_LOG: N atoms for STM: %zu\n", STM_atom_width);
     printf("GAME_LOG: Number of writable magnetic domains: %zu\n", N_mag_domains);
 #endif
-    // ------ Spin chain ------
+
+    // ==== Spin chain ====
     spin_chain_set_periodic_boundary(false);
     spin_chain_set_interaction(1.0f);
 
@@ -63,8 +66,9 @@ static void game_init()
     spin_chain_set_energy(&my_chain);
 
 
-    // ------ graph & camera ------
-    camera_init(&camera, &my_chain);
+    // ==== graph & camera ====
+    // camera_init(&camera, &my_chain);
+    spin_chain_set_camera(&camera, &my_chain, 0.9);
     nano_world_size = get_nano_world_size(&camera);
     my_graph = (graph_t)
     {
@@ -75,7 +79,7 @@ static void game_init()
         .width         = my_chain.chain_length,
     };
 
-    // ------ STM ------
+    // ==== STM ====
     stm = (stm_t) 
     {
         .height        = nano_world_size.y * 0.20f,
@@ -88,7 +92,7 @@ static void game_init()
     stm_init_state(&stm);
 
     
-    // ------ domain_wall ------
+    // ==== domain_wall ====
     float spin_block_width    = inter_atomic * (STM_atom_width-1);
     domain_wall = (domain_wall_t)
     {
@@ -106,7 +110,7 @@ static void game_init()
 #ifdef DEBUG
     printf("GAME_LOG: domain_wall: N_walls %zu\n", domain_wall.N_walls);
 #endif 
-    // ------ Text ------
+    // ==== Text ====
     title_setup = text_create("SETUP: Write 42 using the STM tip.", 40, GREEN);
     text_set_x_centered(&title_setup, GetScreenWidth()/2);
     text_set_y         (&title_setup, 10);
@@ -127,10 +131,10 @@ static void game_init()
     decimal_text = text_create("", 40, RED);
     text_set_y         (&decimal_text, GetScreenHeight() * 0.9f);
 
-    // ------ magnetic data ------
+    // ==== magnetic data ====
     my_data = magnetic_data_create(N_mag_domains, 42);
 
-    // ------ game state ------
+    // ==== game state ====
     mode = SETUP;
 }
  
@@ -265,6 +269,4 @@ static void game_clean()
     spin_chain_release(&my_chain);
     screen_level_reset(&game_scene);
     game_scene.next_screen = OUTRO;
-
-    // my_screen = OUTRO;
 }

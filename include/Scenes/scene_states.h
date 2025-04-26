@@ -24,9 +24,6 @@ typedef struct
     void (*clean)(void);
 } Scene_t;
 
-
-
 void screen_level_reset(Scene_t* level);
-
 
 #endif

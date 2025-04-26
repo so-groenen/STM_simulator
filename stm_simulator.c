@@ -11,7 +11,7 @@ static Scene_t* current_scene = &intro_scene;
 static void update_draw_frame();
 static void cleanup();
 
-int main(int argc, char** argv)
+int main(void)
 {
     srand(time(NULL));
     InitWindow(1024, 548, "STM simulator");
@@ -61,6 +61,9 @@ static void screen_switch()
         break;
     }
 }
+
+
+
 static void update_draw_frame()
 {
     switch (current_scene->state)
@@ -80,4 +83,3 @@ static void update_draw_frame()
         break;
     }
 }
- 

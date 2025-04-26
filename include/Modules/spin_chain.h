@@ -22,11 +22,13 @@ typedef struct spin_chain
     float chain_length;
 } spin_chain_t;
 
-
+void spin_chain_set_inter_atomic(float x);
 void spin_chain_set_interaction(float J);
 void spin_chain_set_periodic_boundary(bool val);
 void spin_chain_init(spin_chain_t* my_chain, size_t N_atom);
-void camera_init(Camera2D* camera, const spin_chain_t* chain);
+// void camera_init(Camera2D* camera, const spin_chain_t* chain);
+void spin_chain_set_camera(Camera2D* camera, const spin_chain_t* chain, float ratio);
+
 void spin_chain_release(spin_chain_t* my_chain);
 void spin_polarize_state(spin_chain_t* my_chain);
 void spin_chain_set_energy(spin_chain_t* my_chain);

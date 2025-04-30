@@ -1,3 +1,0 @@
-C:/Users/solof/Desktop/programming/C_programming/github_projects/STM_simulator/CMakeFiles/stm_simulator.dir
-C:/Users/solof/Desktop/programming/C_programming/github_projects/STM_simulator/CMakeFiles/edit_cache.dir
-C:/Users/solof/Desktop/programming/C_programming/github_projects/STM_simulator/CMakeFiles/rebuild_cache.dir

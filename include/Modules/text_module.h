@@ -2,10 +2,11 @@
 #define TEXT_MODULE_H
 #include "raylib.h"
 #include <string.h>
+#define MAX_TEXT_BUFFER 64
 
 typedef struct
 {
-    char buffer[64];
+    char buffer[MAX_TEXT_BUFFER];
     Color color;
     int fontSize;
     int textSize;

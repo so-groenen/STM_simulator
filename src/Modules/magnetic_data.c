@@ -20,7 +20,7 @@ magnetic_data_t magnetic_data_create(size_t N_bits, int target_value)
     assert(N_bits <= MAX_BINARY_BUFFER && "Binary buffer must be bigger than available magnetic blocks");
     magnetic_data_t data = 
     {
-        .binaryBuffer = {1},
+        .binaryBuffer = {0},
         .bit_size      = N_bits,
         .decimal_value = 0,
         .target_value  = target_value,

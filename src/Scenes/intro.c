@@ -7,7 +7,7 @@ static void intro_run(void);
 static void intro_clean(void);
 static void intro_update(void);
 static void intro_draw(void);
-static void intro_reset_ui_on_resize(void);
+// static void intro_reset_ui_on_resize(void);
 static float _spin_to_rotation(float spin);
 
 // ======== Static vars ========= 
@@ -75,8 +75,15 @@ static void intro_init()
     difficulty          = EASY;
     opening_scene_state = START;
 
-    opening_scene       = first_time? ANIMATION : MENU;
-
+    if(first_time)
+    {
+        opening_scene = ANIMATION;
+        first_time    = false;
+    }
+    else
+    {
+        opening_scene = MENU;
+    }
     
     puts("GAME LOG: INTRO: init:");
 
@@ -93,7 +100,7 @@ static void intro_init()
     text_set_x_centered(&sub_title, GetScreenWidth()/2);
     text_set_y         (&sub_title, 0.3f*GetScreenHeight());
 
-    press_to_continue = text_create("PRESS [ENTER] TO CONTINUE", 20, BLACK);
+    press_to_continue = text_create("PRESS [SPACE] TO CONTINUE", 20, BLACK);
     text_set_x_centered(&press_to_continue, GetScreenWidth()/2);
     text_set_y         (&press_to_continue, GetScreenHeight()*0.8f);
     press_to_continue.color.a = 254;

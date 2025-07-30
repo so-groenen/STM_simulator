@@ -2,7 +2,7 @@
 
 
 
-void magnetic_data_set_decimal(magnetic_data_t* data)
+void magnetic_data_set_decimal(MagneticData* data)
 {
     int decimal_value = 0;
     int power_of_two  = 1;
@@ -15,10 +15,10 @@ void magnetic_data_set_decimal(magnetic_data_t* data)
 }
 
 
-magnetic_data_t magnetic_data_create(size_t N_bits, int target_value)
+MagneticData magnetic_data_create(size_t N_bits, int target_value)
 {
     assert(N_bits <= MAX_BINARY_BUFFER && "Binary buffer must be bigger than available magnetic blocks");
-    magnetic_data_t data = 
+    MagneticData data = 
     {
         .binaryBuffer = {0},
         .bit_size      = N_bits,
@@ -29,7 +29,7 @@ magnetic_data_t magnetic_data_create(size_t N_bits, int target_value)
     return data;
 }
 
-bool magnetic_data_is_target(const magnetic_data_t* data)
+bool magnetic_data_is_target(const MagneticData* data)
 {
     return (data->decimal_value == data->target_value);
 }

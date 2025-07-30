@@ -9,11 +9,11 @@
 #include "assert.h"
 
 
-typedef enum game_mode
+typedef enum game_play_mode
 {
-    SETUP = 0,
-    START,
-} game_mode;
+    SETUP_SPINS = 0,
+    PROTECT_SPINS,
+} GamePlayMode;
 
 typedef struct domain_wall
 {
@@ -21,7 +21,7 @@ typedef struct domain_wall
     Color color;
     size_t N_walls;
     float domain_width;
-} domain_wall_t;
+} DomainWall;
 
 typedef struct graph
 {
@@ -30,11 +30,11 @@ typedef struct graph
     float width;
     float height;
     float circle_radius;
-} graph_t;
+} Graph;
 
 void set_inter_atomic(float x);
 Vector2 get_nano_world_size(const Camera2D* camera);
-void graph_draw(const graph_t* my_graph);
-void domain_wall_draw(const domain_wall_t* domain_wall);
+void graph_draw(const Graph* my_graph);
+void domain_wall_draw(const DomainWall* domain_wall);
 
 #endif

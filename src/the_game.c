@@ -1,38 +1,10 @@
-#include "Scenes/game.h"
-#include "Scenes/outro.h"
-#include "Scenes/intro.h"
-#include "Scenes/scene_states.h"
+#include "the_game.h"
 
- 
-
-static Scene_t* current_scene = &intro_scene;
-static void update_draw_frame();
-static void cleanup();
+static Scene* current_scene = &intro_scene;
+static void  screen_switch();
 Difficulty difficulty;
-
-int main(void)
-{
-    srand(time(NULL));
-    InitWindow(1024, 548, "STM simulator");
-    SetTargetFPS(60);
-
-    puts("===============");
-    puts("GAME LOG: START");
-
-    while (!WindowShouldClose())
-    {
-        update_draw_frame();
-    }
-    cleanup();
-
-    puts("GAME LOG: STOP");
-    puts("===============");
-    CloseWindow();
-    return EXIT_SUCCESS;
-}
-
-
-static void cleanup()
+ 
+void game_cleanup()
 {
     if (WindowShouldClose() && current_scene->state == RUNNING)
     {
@@ -48,7 +20,7 @@ static void screen_switch()
         current_scene = &intro_scene;
         break;
     case GAME:
-        current_scene = &game_scene;
+        current_scene = &game_scene; //gameplay scene
         break;
     case OUTRO:
         current_scene = &outro_scene;
@@ -57,21 +29,18 @@ static void screen_switch()
         break;
     }
 }
-
-
-
-static void update_draw_frame()
+void game_update_draw_frame()
 {
     switch (current_scene->state)
     {
     case LEAVING:
         current_scene->clean();
         screen_switch();
-        // break;
+        /* Fall through! */
     case ENTERING:
         current_scene->init();
         current_scene->state = RUNNING;
-        // break;
+        /* Fall through! */
     case RUNNING:
         current_scene->run();
         break;

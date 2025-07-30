@@ -8,14 +8,14 @@ static void outro_clean(void);
 static void outro_draw(void);
 static void outro_update(void);
 // =======+== Static vars =========
-static text_t goodbye;
-static text_t start_again;
+static Text goodbye;
+static Text start_again;
 
 // ================================
 
 
 // ========== Global var ========== //
-Scene_t outro_scene =
+Scene outro_scene =
 {
     .next_screen    = INTRO,
     .state          = ENTERING,

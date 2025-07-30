@@ -1,8 +1,8 @@
 #include "Modules/stm.h"
 
-stm_t stm_create(size_t N_atom_width, float heigth, float tip_height, Color color)
+Stm stm_create(size_t N_atom_width, float heigth, float tip_height, Color color)
 {
-    stm_t stm = 
+    Stm stm = 
     {
         .rec          = {0.0f},
         .atom_current = 0,
@@ -25,13 +25,13 @@ stm_t stm_create(size_t N_atom_width, float heigth, float tip_height, Color colo
     
     return stm;
 }
-void stm_init_state(stm_t* stm)
+void stm_init_state(Stm* stm)
 {
     stm->atom_current = 0;
     stm->orientation  = STM_UP;
 }
 
-void stm_set_rect(stm_t* stm)
+void stm_set_rect(Stm* stm)
 {
     float width       = stm->atom_width * inter_atomic;
     Rectangle stm_rec =
@@ -45,7 +45,7 @@ void stm_set_rect(stm_t* stm)
 }
  
 
-void stm_send_magnetic_pulse(const stm_t* stm, spin_chain_t* chain)
+void stm_send_magnetic_pulse(const Stm* stm, SpinChain* chain)
 {
     for (size_t i = stm->atom_current; i < stm->atom_current + stm->atom_width; i++)
     {
@@ -66,12 +66,12 @@ void stm_send_magnetic_pulse(const stm_t* stm, spin_chain_t* chain)
     }
 }
 
-static void _stm_rec_position_update(stm_t* stm)
+static void _stm_rec_position_update(Stm* stm)
 {
     stm->rec.x = stm->atom_current * inter_atomic - 0.5*inter_atomic;
 }
 
-void stm_move_left(stm_t* stm)
+void stm_move_left(Stm* stm)
 {
     if (stm->atom_current >= stm->atom_width)
     {
@@ -80,14 +80,14 @@ void stm_move_left(stm_t* stm)
     _stm_rec_position_update(stm);
 }
 
-void stm_move_right(stm_t* stm)
+void stm_move_right(Stm* stm)
 {
     stm->atom_current += stm->atom_width;
     _stm_rec_position_update(stm);
 }
 
 
-void stm_draw(const stm_t* stm)
+void stm_draw(const Stm* stm)
 {
     Vector2 topV    = {stm->rec.x +  stm->rec.width/2, stm->rec.y};
     Vector2 bottomV = {stm->rec.x +  stm->rec.width/2, stm->rec.y + stm->rec.height};
@@ -121,7 +121,7 @@ void stm_draw(const stm_t* stm)
     }
 }
 
-void stm_draw2(const stm_t* stm, float thickness)
+void stm_draw2(const Stm* stm, float thickness)
 {
     float width       = stm->atom_width * inter_atomic;
     Rectangle stm_rec =

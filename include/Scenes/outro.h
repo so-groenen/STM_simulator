@@ -9,7 +9,7 @@
 #include "Scenes/scene_states.h"
 #include "Modules/text_module.h"
 
-extern Scene_t outro_scene;
+extern Scene outro_scene;
 extern Difficulty difficulty;
 
 #endif

@@ -6,7 +6,7 @@ typedef enum
     INTRO,
     GAME,
     OUTRO,
-} Scene_name;
+} SceneName;
 
 typedef enum
 {
@@ -20,17 +20,17 @@ typedef enum
     ENTERING,
     RUNNING,
     LEAVING,
-} Game_state;
+} GameState;
 
 typedef struct
 {
-    Scene_name next_screen;
-    Game_state state;
+    SceneName next_screen;
+    GameState state;
     void (*init)(void);
     void (*run)(void);
     void (*clean)(void);
-} Scene_t;
+} Scene;
 
-void screen_level_reset(Scene_t* level);
+void screen_level_reset(Scene* level);
 
 #endif

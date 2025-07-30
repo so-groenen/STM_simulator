@@ -6,7 +6,7 @@ static float interaction      = 1.0f;
 float inter_atomic; 
 
 
-static float _get_deltaE(const spin_chain_t* my_chain, size_t i, float dtheta);
+static float _get_deltaE(const SpinChain* my_chain, size_t i, float dtheta);
 static bool _accept_proposal(float dE, float temp);
 
 void spin_chain_set_inter_atomic(float x)
@@ -23,7 +23,7 @@ void spin_chain_set_periodic_boundary(bool val)
     periodic_boundary = val;
 }
 
-void spin_chain_init(spin_chain_t* my_chain, size_t N_atom)
+void spin_chain_init(SpinChain* my_chain, size_t N_atom)
 {
     float* _spins = calloc(N_atom, sizeof(float));
     if (_spins == NULL)
@@ -41,7 +41,7 @@ void spin_chain_init(spin_chain_t* my_chain, size_t N_atom)
     my_chain->chain_length = (N_atom-1)*inter_atomic;
 }
 
-void spin_chain_set_camera(Camera2D* camera, const spin_chain_t* chain, float ratio)
+void spin_chain_set_camera(Camera2D* camera, const SpinChain* chain, float ratio)
 {
     camera->target.x   = chain->chain_length / 2.0f;
     camera->target.y = 0;
@@ -50,20 +50,20 @@ void spin_chain_set_camera(Camera2D* camera, const spin_chain_t* chain, float ra
     camera->zoom     = ratio * (float)GetScreenWidth() / chain->chain_length;
 }
 
-void spin_chain_release(spin_chain_t* my_chain)
+void spin_chain_release(SpinChain* my_chain)
 {
     puts("GAME LOG: spin chain memory release.");
     free(my_chain->spins);
 }
 
-void spin_polarize_state(spin_chain_t* my_chain)
+void spin_polarize_state(SpinChain* my_chain)
 {
     for (size_t i = 0; i < my_chain->N; i++)
     {
         my_chain->spins[i] = SPIN_UP;
     }
 }
-void spin_chain_set_all(spin_chain_t* my_chain, float angle)
+void spin_chain_set_all(SpinChain* my_chain, float angle)
 {
     for (size_t i = 0; i < my_chain->N; i++)
     {
@@ -73,7 +73,7 @@ void spin_chain_set_all(spin_chain_t* my_chain, float angle)
 
 
 
-void spin_chain_set_energy(spin_chain_t* my_chain)
+void spin_chain_set_energy(SpinChain* my_chain)
 {
     size_t last_index = my_chain->N-1;
     float E = 0;
@@ -104,7 +104,7 @@ float modulo_2PI_recursive(float theta)
     return theta;
 };
 
-static float _get_deltaE(const spin_chain_t* my_chain, size_t i, float dtheta)
+static float _get_deltaE(const SpinChain* my_chain, size_t i, float dtheta)
 {
     float E_R = 0;
     float E_L = 0;
@@ -132,18 +132,18 @@ static float _get_deltaE(const spin_chain_t* my_chain, size_t i, float dtheta)
 
 static bool _accept_proposal(float dE, float temp)
 {
-    float r     = (float)rand() / RAND_MAX;
+    float r     = (float)rand() / (float)RAND_MAX;
     float beta  = (temp == 0)? MAX_BETA : 1.f/temp; 
     float proba = exp(-dE*beta);
     return ( (dE < 0) || (r < proba) );
 }
 
-void spin_chain_update_monte_carlo(spin_chain_t* my_chain, float temperature)
+void spin_chain_update_monte_carlo(SpinChain* my_chain, float temperature)
 {
     for (size_t i = 0; i < my_chain->N; i++)
     {
         size_t index = rand() % my_chain->N;
-        float dtheta = (1.0f * M_PI / 48.0f) * (  1.0f - 2.0f * (float)rand()/RAND_MAX );
+        float dtheta = (1.0f * M_PI / 48.0f) * (  1.0f - 2.0f * (float)rand()/ (float)RAND_MAX );
 
         float dE = _get_deltaE(my_chain, index, dtheta);
         if( _accept_proposal(dE, temperature))
@@ -155,7 +155,7 @@ void spin_chain_update_monte_carlo(spin_chain_t* my_chain, float temperature)
 }
 
 
-float spin_chain_get_block_magnetizaiton(const spin_chain_t* chain, size_t block_index, size_t block_width)
+float spin_chain_get_block_magnetizaiton(const SpinChain* chain, size_t block_index, size_t block_width)
 {
     float spin_Y = 0.0f;
     if(block_index*block_width + block_width >= chain->N)

@@ -8,9 +8,9 @@
 #include "assert.h"
 #include "Modules/spin_chain.h"
 #include "Scenes/scene_states.h"
+#include "Scenes/background_color.h"
 #include "Modules/text_module.h"
 
-
-extern Scene_t intro_scene;
+extern Scene intro_scene;
 extern Difficulty difficulty;
 #endif

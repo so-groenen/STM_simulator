@@ -1,17 +1,17 @@
 #include "Modules/text_module.h"
 
 
-void text_set_size(text_t* text)
+void text_set_size(Text* text)
 {
     text->textSize = MeasureText(text->buffer, text->fontSize);
 }
-int text_get_x_center(const text_t* text)
+int text_get_x_center(const Text* text)
 {
     return text->x + 0.5f*text->textSize; 
 }
-text_t text_create(const char* title, int fontSize, Color color)
+Text text_create(const char* title, int fontSize, Color color)
 {
-    text_t text =
+    Text text =
     {
         .color    = color,
         .fontSize = fontSize,
@@ -23,24 +23,24 @@ text_t text_create(const char* title, int fontSize, Color color)
     return text; 
 }
 
-void text_set_x_centered(text_t* text, float x)
+void text_set_x_centered(Text* text, float x)
 {
     text->x = x - 0.5*text->textSize;
 }
-void text_set_x(text_t* text, float x)
+void text_set_x(Text* text, float x)
 {
     text->x = x;
 }
-void text_set_y(text_t* text, float y)
+void text_set_y(Text* text, float y)
 {
     text->y = y;
 }
-void text_write(text_t* text, const char* input)
+void text_write(Text* text, const char* input)
 {
     strcpy(text->buffer, input);
     text_set_size(text);
 }
-void text_draw(const text_t* text)
+void text_draw(const Text* text)
 {
     DrawText(text->buffer, 
             text->x, 

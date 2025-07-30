@@ -17,12 +17,12 @@ typedef struct magnetic_data
     size_t bit_size;
     int decimal_value;
     int target_value;
-} magnetic_data_t;
+} MagneticData;
 
  
-void magnetic_data_set_decimal(magnetic_data_t* data);
-magnetic_data_t magnetic_data_create(size_t N_bits, int target_value);
-bool magnetic_data_is_target(const magnetic_data_t* data);
+void magnetic_data_set_decimal(MagneticData* data);
+MagneticData magnetic_data_create(size_t N_bits, int target_value);
+bool magnetic_data_is_target(const MagneticData* data);
 
 
 #endif

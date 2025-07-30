@@ -1,24 +1,23 @@
-#include "Scenes/game.h"
+#include "Scenes/game_play.h"
 
-// #define DEBUG 
 
 //        Static functions
 // ================================
-static void game_init(void);
-static void game_run(void);
-static void game_clean(void);
-static void _game_update(void);
-static void _game_draw(void);
+static void game_play_init(void); //rename to game_play
+static void game_play_run(void);
+static void game_play_clean(void);
+static void _game_play_update(void);
+static void _game_play_draw(void);
 // ================================
 
 // ====== global variable ======
-Scene_t game_scene =
+Scene game_scene =
 {
     .next_screen    = OUTRO,
     .state          = ENTERING,
-    .init           = game_init,
-    .run            = game_run,
-    .clean          = game_clean,
+    .init           = game_play_init,
+    .run            = game_play_run,
+    .clean          = game_play_clean,
 };
 // =============================
 
@@ -31,22 +30,22 @@ static size_t STM_atom_width;
 
 static Camera2D camera;
 static Vector2 nano_world_size;
-static graph_t my_graph;
-static spin_chain_t my_chain;
-static stm_t stm;
-static domain_wall_t domain_wall;
-static text_t title_setup;
-static text_t title_start;
-static text_t temperatur_text;
-static text_t spin_text;   
-static text_t binary_text;
-static text_t decimal_text;
-static magnetic_data_t my_data;
-static game_mode mode;
+static Graph my_graph;
+static SpinChain my_chain;
+static Stm stm;
+static DomainWall domain_wall;
+static Text title_setup;
+static Text title_start;
+static Text temperatur_text;
+static Text spin_text;   
+static Text binary_text;
+static Text decimal_text;
+static MagneticData my_data;
+static GamePlayMode game_play_mode;
 // =============================
 
 
-static void game_init()
+static void game_play_init()
 {
     puts("GAME LOG: GAME: init");
 
@@ -74,7 +73,7 @@ static void game_init()
     size_t N_mag_domains  = N_atoms/(2*STM_atom_width);
 
 
-#ifdef DEBUG
+#ifdef DEBUG // use DEBUG_LOG
     printf("GAME_LOG: N atoms: %zu\n", N_atoms);
     printf("GAME_LOG: N atoms for STM: %zu\n", STM_atom_width);
     printf("GAME_LOG: Number of writable magnetic domains: %zu\n", N_mag_domains);
@@ -94,7 +93,7 @@ static void game_init()
     float chain_to_screen = 0.9f;           // 1 means the full chain takes up all the screen width;
     spin_chain_set_camera(&camera, &my_chain, chain_to_screen);
     nano_world_size = get_nano_world_size(&camera);
-    my_graph = (graph_t)
+    my_graph = (Graph)
     {
         .axis_color    = BLACK,
         .circle_color  = RED,
@@ -104,7 +103,7 @@ static void game_init()
     };
 
     // ==== STM ====
-    stm = (stm_t) 
+    stm = (Stm) 
     {
         .height        = nano_world_size.y * 0.20f,
         .tip_height    = -nano_world_size.y * 0.10f,
@@ -118,7 +117,7 @@ static void game_init()
     
     // ==== domain_wall ====
     float spin_block_width    = inter_atomic * (STM_atom_width-1);
-    domain_wall = (domain_wall_t)
+    domain_wall = (DomainWall)
     {
         .domain_width = spin_block_width,
         .N_walls      = N_mag_domains,
@@ -134,8 +133,9 @@ static void game_init()
 #ifdef DEBUG
     printf("GAME_LOG: domain_wall: N_walls %zu\n", domain_wall.N_walls);
 #endif 
+
     // ==== Text ====
-    title_setup = text_create("SETUP: Write 42 using the STM tip.", 40, GREEN);
+    title_setup = text_create("SETUP SPINS: Write 42 using the STM tip.", 40, DARKGREEN);
     text_set_x_centered(&title_setup, GetScreenWidth()/2);
     text_set_y         (&title_setup, 10);
  
@@ -155,28 +155,29 @@ static void game_init()
     decimal_text = text_create("", 40, RED);
     text_set_y         (&decimal_text, GetScreenHeight() * 0.9f);
 
+
     // ==== magnetic data ====
     my_data = magnetic_data_create(N_mag_domains, 42);
 
+
     // ==== game state ====
-    mode = SETUP;
-    temperature = 0.0f;
+    game_play_mode = SETUP_SPINS;
+    temperature    = 0.0f;
 }
  
 
-static void _game_update(void)
+static void _game_play_update(void)
 {
-    if (mode == SETUP && magnetic_data_is_target(&my_data))
+    if (game_play_mode == SETUP_SPINS && magnetic_data_is_target(&my_data))
     {
         temperature = 10.0f;
-        mode        = START; 
+        game_play_mode = PROTECT_SPINS; 
     }
-    else if (mode == START && !magnetic_data_is_target(&my_data))
+    else if (game_play_mode == PROTECT_SPINS && !magnetic_data_is_target(&my_data))
     {
         game_scene.state = LEAVING;
     }
     
-    // Move STM tip
     if (IsKeyPressed(KEY_LEFT))
     {
         stm_move_left(&stm);
@@ -186,47 +187,40 @@ static void _game_update(void)
         stm_move_right(&stm);
     }
 
-    // switch tip orientation
     if(IsKeyPressed(KEY_TAB))
     {
         stm.orientation = !stm.orientation;
     }
 
-    // send pulse
     if(IsKeyPressed(KEY_SPACE))  
         stm_send_magnetic_pulse(&stm, &my_chain);
 
-    // reset state
     if(IsKeyPressed(KEY_HOME)) 
         spin_chain_set_all(&my_chain, SPIN_DOWN);
 
-        // update spin chain
     spin_chain_update_monte_carlo(&my_chain, temperature); 
 }
 
 
-static void _game_draw(void)
+static void _game_play_draw(void)
 {
     BeginDrawing();
-        ClearBackground(WHITE);
+        ClearBackground(MY_BEIGE);
 
-        // titles:
-        switch (mode)
+        switch (game_play_mode)
         {
-        case SETUP:
+        case SETUP_SPINS:
             text_draw(&title_setup);
             break;
-        case START:
+        case PROTECT_SPINS:
             text_draw(&title_start);
             break;
         }
         
-        // temperature text:
         text_write         (&temperatur_text, TextFormat("temperature= %.2f", temperature));
         text_set_x_centered(&temperatur_text, GetScreenWidth()/2);
         text_draw          (&temperatur_text);
 
-        // local magnetization text & corresponding binary values
         for (size_t n = 0; n < domain_wall.N_walls; n++)
         {
             float spin_block_start      = 2*n * inter_atomic*STM_atom_width;
@@ -245,26 +239,20 @@ static void _game_draw(void)
             text_draw          (&binary_text);
 
             my_data.binaryBuffer[n] = binary_value;
-        }
+        } 
 
-        // decimal text:
         magnetic_data_set_decimal(&my_data);
 
         text_write         (&decimal_text, TextFormat("Base 10 value: %d", my_data.decimal_value));
         text_set_x_centered(&decimal_text, GetScreenWidth()/2.0f);
         text_draw          (&decimal_text);
 
-
-        // Draw nanostructures & plot:
         BeginMode2D(camera);
 
-            // domain walls:
             domain_wall_draw(&domain_wall);
 
-            // STM:
             stm_draw(&stm);
 
-            // axis:
             graph_draw(&my_graph);
 
             // spin values:
@@ -280,13 +268,13 @@ static void _game_draw(void)
     EndDrawing();       
 }
 
-static void game_run()
+static void game_play_run()
 {
-    _game_update();
-    _game_draw();
+    _game_play_update();
+    _game_play_draw();
 }
 
-static void game_clean()
+static void game_play_clean()
 {
     puts("GAME LOG: GAME: clean-up.");
     spin_chain_release(&my_chain);

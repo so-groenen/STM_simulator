@@ -1,5 +1,6 @@
 # Prerequisites
 *.d
+.gitignore
 
 # Object files
 *.o
@@ -7,10 +8,18 @@
 *.obj
 *.elf
 
+#builds:
+build
+build_clang
+build_web
+build_gcc
+
 # Cmake files:
 CMakeCache.txt
 CMakePresets.json
 .cmake
+CMakeFiles
+cmake_install.cmake
 
 # Ninja
 .ninja_deps
